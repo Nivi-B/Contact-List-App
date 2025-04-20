@@ -1,0 +1,30 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ContactApp.ViewModels"
+             x:Class="ContactApp.Views.ContactsPage"
+             Title="Contacts">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ContactsViewModel />
+    </ContentPage.BindingContext>
+
+    <StackLayout Padding="10">
+        <CollectionView ItemsSource="{Binding Contacts}" SelectionMode="Single"
+                        SelectionChangedCommand="{Binding SelectContactCommand}"
+                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference contactList}}"
+                        x:Name="contactList">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame BorderColor="LightGray" Margin="5" Padding="10">
+                        <VerticalStackLayout>
+                            <Label Text="{Binding Name}" FontAttributes="Bold" />
+                            <Label Text="{Binding Email}" FontSize="Small" />
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <Button Text="Add More Contacts" Command="{Binding AddMoreCommand}" Margin="0,20,0,0"/>
+    </StackLayout>
+</ContentPage>

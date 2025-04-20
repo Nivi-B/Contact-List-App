@@ -1,0 +1,27 @@
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:ContactApp.ViewModels"
+             x:Class="ContactApp.Views.ContactDetailsPage"
+             Title="Contact Details">
+
+    <ContentPage.BindingContext>
+        <viewmodels:ContactDetailsViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="15">
+
+            <Entry Placeholder="Name" Text="{Binding SelectedContact.Name}" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
+            <Entry Placeholder="Email" Text="{Binding SelectedContact.Email}" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
+            <Entry Placeholder="Phone Number" Text="{Binding SelectedContact.PhoneNumber}" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
+            <Editor Placeholder="Description" Text="{Binding SelectedContact.Description}" HeightRequest="100" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
+
+            <HorizontalStackLayout Spacing="10">
+                <Button Text="Back" Command="{Binding GoBackCommand}" />
+                <Button Text="Edit" Command="{Binding EditCommand}" IsVisible="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
+                <Button Text="Save" Command="{Binding SaveCommand}" IsVisible="{Binding IsEditable}" />
+            </HorizontalStackLayout>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
