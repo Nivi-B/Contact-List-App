@@ -11,6 +11,7 @@
 
 		<CollectionView x:Name="ContactsListView"
                         ItemsSource="{Binding Contacts}"
+						SelectionMode="Single"
                         SelectionChanged="OnContactSelected">
 			<CollectionView.ItemTemplate>
 				<DataTemplate>

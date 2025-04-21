@@ -12,18 +12,34 @@ namespace Contact_List_App.Views
             BindingContext = new ContactsViewModel();  // Bind the ContactsViewModel to the page
         }
 
+        //private async void OnContactSelected(object sender, SelectionChangedEventArgs e)
+        //{
+        //    var selectedContact = e.CurrentSelection.FirstOrDefault() as ContactModel;
+
+        //    if (selectedContact != null)
+        //    {
+        //        // Navigate to ContactDetailsPage with the selected contact
+        //        await Navigation.PushAsync(new ContactDetailsPage(selectedContact));
+        //    }
+
+        //    // Clear selection
+        //    ((CollectionView)sender).SelectedItem = null;
+        //}
         private async void OnContactSelected(object sender, SelectionChangedEventArgs e)
         {
-            var selectedContact = e.CurrentSelection.FirstOrDefault() as ContactModel;
-
-            if (selectedContact != null)
+            if (e.CurrentSelection != null && e.CurrentSelection.Count > 0)
             {
-                // Navigate to ContactDetailsPage with the selected contact
-                await Navigation.PushAsync(new ContactDetailsPage(selectedContact));
-            }
+                var selectedContact = e.CurrentSelection.FirstOrDefault() as ContactModel;
 
-            // Clear selection
-            ((CollectionView)sender).SelectedItem = null;
+                if (selectedContact != null)
+                {
+                    await Navigation.PushAsync(new ContactDetailsPage(selectedContact));
+                }
+
+                // Clear selection
+                ((CollectionView)sender).SelectedItem = null;
+            }
         }
+
     }
 }
