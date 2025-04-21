@@ -1,6 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using Contact_List_App.Models;
-using Contact_List_App.ViewModels;
+﻿using Contact_List_App.Models;
 
 namespace Contact_List_App.Views
 {
@@ -10,8 +8,9 @@ namespace Contact_List_App.Views
         {
             InitializeComponent();
 
-            // Set the binding context to the contact passed to this page
-            BindingContext = new ContactDetailsViewModel(contact);
+            nameLabel.Text = contact.Name;
+            emailLabel.Text = contact.Email;
+            phoneLabel.Text = contact.PhoneNumber;
         }
     }
 }

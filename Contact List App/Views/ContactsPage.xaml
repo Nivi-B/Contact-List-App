@@ -1,28 +1,20 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Contact_List_App.Views.ContactsPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contact_List_App.Views.ContactsPage"
+             Title="Contacts List">
 
-	<StackLayout Padding="20">
-		<Label Text="Contacts List"
-               FontSize="24"
-               HorizontalOptions="Center"
-               Margin="0,20,0,20" />
-
-		<CollectionView x:Name="ContactsListView"
-                        ItemsSource="{Binding Contacts}"
-						SelectionMode="Single"
-                        SelectionChanged="OnContactSelected">
+	<VerticalStackLayout Padding="20">
+		<CollectionView x:Name="contactsView" SelectionMode="Single" SelectionChanged="OnContactSelected">
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
-					<Frame Padding="10" Margin="0,5" BorderColor="LightGray">
-						<VerticalStackLayout>
-							<Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" />
-							<Label Text="{Binding Email}" FontSize="14" />
-						</VerticalStackLayout>
+					<Frame Padding="10" Margin="5" BackgroundColor="LightGray">
+						<Label Text="{Binding Name}" FontSize="20"/>
 					</Frame>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
 		</CollectionView>
-	</StackLayout>
+
+		<Button Text="Add New Contact" Clicked="OnAddContactClicked" Margin="0,10,0,0"/>
+	</VerticalStackLayout>
 </ContentPage>

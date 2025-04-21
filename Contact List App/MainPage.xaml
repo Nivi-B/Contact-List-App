@@ -1,20 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             x:Class="Contact_List_App.Views.MainPage">
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Contact_List_App.Views.MainPage"
+             Title="Add Contact">
 
-    <ContentPage.Content>
-        <StackLayout Padding="20">
-            <Label Text="Welcome to the Contact List App"
-                   FontSize="24"
-                   HorizontalOptions="Center"
-                   Margin="0,20,0,20" />
+    <VerticalStackLayout Padding="20" Spacing="15">
+        <Entry x:Name="nameEntry" Placeholder="Name" />
+        <Entry x:Name="emailEntry" Placeholder="Email" Keyboard="Email" />
+        <Entry x:Name="phoneEntry" Placeholder="Phone Number" Keyboard="Telephone" />
 
-            <Button Text="Add New Contact"
-                    Clicked="OnAddContactClicked"
-                    BackgroundColor="LightBlue"
-                    TextColor="Black"
-                    Margin="0,10,0,0" />
-        </StackLayout>
-    </ContentPage.Content>
+        <Button Text="Save Contact" Clicked="OnSaveContactClicked"/>
+        <Button Text="View All Contacts" Clicked="OnViewContactsClicked"/>
+    </VerticalStackLayout>
 </ContentPage>
