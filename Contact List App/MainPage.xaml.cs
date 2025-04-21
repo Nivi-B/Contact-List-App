@@ -1,25 +1,19 @@
-﻿namespace Contact_List_App
+﻿using Microsoft.Maui.Controls;
+using Contact_List_App.ViewModels;
+
+namespace Contact_List_App.Views
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
-
         public MainPage()
         {
             InitializeComponent();
         }
 
-        private void OnCounterClicked(object sender, EventArgs e)
+        private async void OnAddContactClicked(object sender, EventArgs e)
         {
-            count++;
-
-            if (count == 1)
-                CounterBtn.Text = $"Clicked {count} time";
-            else
-                CounterBtn.Text = $"Clicked {count} times";
-
-            SemanticScreenReader.Announce(CounterBtn.Text);
+            // Navigate to ContactsPage
+            await Navigation.PushAsync(new AddContactPage());
         }
     }
-
 }

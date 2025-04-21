@@ -1,38 +1,20 @@
 ﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using ContactApp.Models;
-using ContactApp.Views;
-using Contact_List_App.Views;
+using Contact_List_App.Models;
 
-namespace ContactApp.ViewModels
+namespace Contact_List_App.ViewModels
 {
-    public partial class ContactsViewModel : ObservableObject
+    public class ContactsViewModel : BindableObject
     {
-        public ObservableCollection<Contact> Contacts { get; }
+        public ObservableCollection<ContactModel> Contacts { get; set; }
 
-        public ContactsViewModel(ObservableCollection<Contact> contacts)
+        public ContactsViewModel()
         {
-            Contacts = contacts;
-        }
-
-        [RelayCommand]
-        private async Task SelectContact(Contact contact)
-        {
-            var navParams = new Dictionary<string, object>
+            // Example contacts - In reality, these would be loaded from a database or API
+            Contacts = new ObservableCollection<ContactModel>
             {
-                { "SelectedContact", contact }
+                new ContactModel { Name = "John Doe", Email = "johndoe@example.com", PhoneNumber = "123-456-7890", Description = "Friend" },
+                new ContactModel { Name = "Jane Smith", Email = "janesmith@example.com", PhoneNumber = "098-765-4321", Description = "Work" }
             };
-
-            await Shell.Current.GoToAsync(nameof(ContactDetailsPage), navParams);
-        }
-
-        [RelayCommand]
-        private async Task AddMore()
-        {
-            await Shell.Current.GoToAsync(nameof(MainPage));
         }
     }
 }

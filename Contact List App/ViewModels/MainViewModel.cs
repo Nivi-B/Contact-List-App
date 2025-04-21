@@ -1,41 +1,31 @@
-﻿using System.Collections.ObjectModel;
-using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using ContactApp.Models;
-using ContactApp.Views;
-using System;
-using Contact_List_App.Views;
-using System.Xml.Linq;
+﻿using Contact_List_App.Models;
+using System.Collections.ObjectModel;
+using System.Windows.Input;
+using Microsoft.Maui.Controls;
 
-namespace ContactApp.ViewModels
+namespace Contact_List_App.ViewModels
 {
-    public partial class MainViewModel : ObservableObject
+    public class MainViewModel : BindableObject
     {
-        [ObservableProperty] private string name;
-        [ObservableProperty] private string email;
-        [ObservableProperty] private string phoneNumber;
-        [ObservableProperty] private string description;
+        private ObservableCollection<ContactModel> _contacts;
 
-        public ObservableCollection<Contact> Contacts { get; }
-
-        public MainViewModel(ObservableCollection<Contact> contacts)
+        public ObservableCollection<ContactModel> Contacts
         {
-            Contacts = contacts;
+            get => _contacts;
+            set
+            {
+                _contacts = value;
+                OnPropertyChanged();
+            }
         }
 
-        [RelayCommand]
-        private async Task Save()
+        public MainViewModel()
         {
-            Contacts.Add(new Contact
+            Contacts = new ObservableCollection<ContactModel>
             {
-                Name = Name,
-                Email = Email,
-                PhoneNumber = PhoneNumber,
-                Description = Description
-            });
-
-            await Shell.Current.GoToAsync(nameof(ContactsPage));
+                new ContactModel { Name = "John Doe", Email = "johndoe@example.com", PhoneNumber = "123-456-7890", Description = "Friend" },
+                new ContactModel { Name = "Jane Smith", Email = "janesmith@example.com", PhoneNumber = "098-765-4321", Description = "Work" }
+            };
         }
     }
 }

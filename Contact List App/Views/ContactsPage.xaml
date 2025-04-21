@@ -1,30 +1,27 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:ContactApp.ViewModels"
-             x:Class="ContactApp.Views.ContactsPage"
-             Title="Contacts">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Contact_List_App.Views.ContactsPage">
 
-    <ContentPage.BindingContext>
-        <viewmodels:ContactsViewModel />
-    </ContentPage.BindingContext>
+	<StackLayout Padding="20">
+		<Label Text="Contacts List"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Margin="0,20,0,20" />
 
-    <StackLayout Padding="10">
-        <CollectionView ItemsSource="{Binding Contacts}" SelectionMode="Single"
-                        SelectionChangedCommand="{Binding SelectContactCommand}"
-                        SelectionChangedCommandParameter="{Binding SelectedItem, Source={x:Reference contactList}}"
-                        x:Name="contactList">
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <Frame BorderColor="LightGray" Margin="5" Padding="10">
-                        <VerticalStackLayout>
-                            <Label Text="{Binding Name}" FontAttributes="Bold" />
-                            <Label Text="{Binding Email}" FontSize="Small" />
-                        </VerticalStackLayout>
-                    </Frame>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-
-        <Button Text="Add More Contacts" Command="{Binding AddMoreCommand}" Margin="0,20,0,0"/>
-    </StackLayout>
+		<CollectionView x:Name="ContactsListView"
+                        ItemsSource="{Binding Contacts}"
+                        SelectionChanged="OnContactSelected">
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Frame Padding="10" Margin="0,5" BorderColor="LightGray">
+						<VerticalStackLayout>
+							<Label Text="{Binding Name}" FontAttributes="Bold" FontSize="18" />
+							<Label Text="{Binding Email}" FontSize="14" />
+						</VerticalStackLayout>
+					</Frame>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</StackLayout>
 </ContentPage>

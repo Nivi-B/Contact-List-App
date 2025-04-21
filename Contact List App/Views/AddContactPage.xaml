@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Contact_List_App.Views.AddContactPage">
+
+    <StackLayout Padding="20">
+        <Label Text="Add New Contact"
+               FontSize="24"
+               HorizontalOptions="Center"
+               Margin="0,20,0,20" />
+
+        <Entry x:Name="NameEntry" Placeholder="Name" />
+        <Entry x:Name="EmailEntry" Placeholder="Email" />
+        <Entry x:Name="PhoneEntry" Placeholder="Phone" />
+        <Entry x:Name="DescriptionEntry" Placeholder="Description" />
+
+        <Button Text="Save Contact"
+                Clicked="OnSaveContactClicked"
+                BackgroundColor="LightBlue"
+                TextColor="Black"
+                Margin="0,10,0,0" />
+    </StackLayout>
+</ContentPage>

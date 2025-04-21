@@ -1,27 +1,21 @@
-﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:viewmodels="clr-namespace:ContactApp.ViewModels"
-             x:Class="ContactApp.Views.ContactDetailsPage"
-             Title="Contact Details">
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="Contact_List_App.Views.ContactDetailsPage">
 
-    <ContentPage.BindingContext>
-        <viewmodels:ContactDetailsViewModel />
-    </ContentPage.BindingContext>
+	<StackLayout Padding="10">
+		<Label Text="Contact Details" FontSize="24" HorizontalOptions="Center" />
 
-    <ScrollView>
-        <VerticalStackLayout Padding="20" Spacing="15">
+		<Label Text="Name:" FontAttributes="Bold" />
+		<Label Text="{Binding Contact.Name}" />
 
-            <Entry Placeholder="Name" Text="{Binding SelectedContact.Name}" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
-            <Entry Placeholder="Email" Text="{Binding SelectedContact.Email}" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
-            <Entry Placeholder="Phone Number" Text="{Binding SelectedContact.PhoneNumber}" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
-            <Editor Placeholder="Description" Text="{Binding SelectedContact.Description}" HeightRequest="100" IsReadOnly="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
+		<Label Text="Email:" FontAttributes="Bold" />
+		<Label Text="{Binding Contact.Email}" />
 
-            <HorizontalStackLayout Spacing="10">
-                <Button Text="Back" Command="{Binding GoBackCommand}" />
-                <Button Text="Edit" Command="{Binding EditCommand}" IsVisible="{Binding IsEditable, Converter={StaticResource InverseBoolConverter}}" />
-                <Button Text="Save" Command="{Binding SaveCommand}" IsVisible="{Binding IsEditable}" />
-            </HorizontalStackLayout>
+		<Label Text="Phone:" FontAttributes="Bold" />
+		<Label Text="{Binding Contact.PhoneNumber}" />
 
-        </VerticalStackLayout>
-    </ScrollView>
+		<Label Text="Description:" FontAttributes="Bold" />
+		<Label Text="{Binding Contact.Description}" />
+	</StackLayout>
 </ContentPage>

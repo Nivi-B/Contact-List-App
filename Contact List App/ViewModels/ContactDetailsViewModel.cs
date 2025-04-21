@@ -1,34 +1,14 @@
-﻿using System.Threading.Tasks;
-using CommunityToolkit.Mvvm.ComponentModel;
-using CommunityToolkit.Mvvm.Input;
-using ContactApp.Models;
+﻿using Contact_List_App.Models;
 
-namespace ContactApp.ViewModels
+namespace Contact_List_App.ViewModels
 {
-    [QueryProperty(nameof(SelectedContact), "SelectedContact")]
-    public partial class ContactDetailsViewModel : ObservableObject
+    public class ContactDetailsViewModel : BindableObject
     {
-        [ObservableProperty] private Contact selectedContact;
-        [ObservableProperty] private bool isEditable;
+        public ContactModel Contact { get; set; }
 
-        [RelayCommand]
-        private void Edit()
+        public ContactDetailsViewModel(ContactModel contact)
         {
-            IsEditable = true;
-        }
-
-        [RelayCommand]
-        private async Task Save()
-        {
-            IsEditable = false;
-            await Shell.Current.GoToAsync("..");
-        }
-
-        [RelayCommand]
-        private async Task GoBack()
-        {
-            await Shell.Current.GoToAsync("..");
+            Contact = contact;
         }
     }
 }
-

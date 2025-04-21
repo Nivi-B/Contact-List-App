@@ -60,25 +60,21 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Remove="Views\ContactDetailsPage.xaml" />
-	  <MauiXaml Remove="Views\ContactsPage.xaml" />
-	  <MauiXaml Remove="Views\MainPage.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Compile Include="Views\ContactDetailsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Compile>
-	  <Compile Include="Views\ContactsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </Compile>
-	  <Compile Include="Views\MainPage.xaml" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.0" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Views\AddContactPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContactDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContactsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 </Project>
