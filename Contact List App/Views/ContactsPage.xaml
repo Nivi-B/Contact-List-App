@@ -9,7 +9,7 @@
 			<CollectionView.ItemTemplate>
 				<DataTemplate>
 					<Frame Padding="10" Margin="5" BackgroundColor="LightGray">
-						<Label Text="{Binding Name}" FontSize="20"/>
+                        <Label Text="{Binding Name}" FontSize="20" TextColor="Black"/>
 					</Frame>
 				</DataTemplate>
 			</CollectionView.ItemTemplate>
